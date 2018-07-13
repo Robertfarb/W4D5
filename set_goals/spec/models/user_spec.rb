@@ -29,29 +29,40 @@ RSpec.describe User, type: :model do
 
   describe '::find_by_credentials' do
     it 'should find a user by credentials' do
+      expect(User.find_by_credentials("stelladoge1", "123456").username).to eq("stelladoge1")
     end
 
     it 'should not return a user with incorrect credentials' do
+      expect(User.find_by_credentials("asdf", "123456")).to be_nil
     end
   end
 
   describe '::generate_session_token' do
-    it 'generate a new session token' do
+    sess_token = User.generate_session_token
+    it 'should generate a new session token' do
+      expect(sess_token.length).to be(22)
     end
   end
 
   describe 'reset_session_token!' do
     it 'should reset a users session token' do
+      old_sess_token = User.find(1).session_token
+      stella = User.first
+      stella.reset_session_token!
+
+      expect(old_sess_token).not_to eq(stella.session_token)
     end
   end
 
   describe 'password=' do
     it 'should set the users password digest' do
+      
     end
   end
 
   describe 'is_password?' do
-    it 'should return true if the password is correct'
+    it 'should return true if the password is correct' do
+    end
   end
 
   describe 'ensure_session_token' do
