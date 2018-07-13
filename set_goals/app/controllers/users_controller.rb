@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.create
+    @users = User.all
     render :index
   end
 
