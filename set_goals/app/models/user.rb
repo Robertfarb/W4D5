@@ -11,4 +11,6 @@
 #
 
 class User < ApplicationRecord
+  validates :password_digest, :session_token, :username, presence: true
+  validates :password, length: {minimum: 6, allow_nil: true}
 end

@@ -11,17 +11,19 @@
 #
 
 require 'rails_helper'
-requre 'spec_helper'
 
 RSpec.describe User, type: :model do
-  describe UserModel do
-    it 'validates presence of username' do
-    end
 
-    it 'validates presence of password digest' do
-    end
-
-    it 'validates presence of password' do
-    end
+  describe 'validations' do
+    it {should validate_presence_of(:username)}
+    it {should validate_presence_of(:password_digest)}
+    it {should validate_presence_of(:session_token)}
   end
+
+  it 'validates presence of password digest' do
+  end
+
+  it 'validates presence of password' do
+  end
+
 end
