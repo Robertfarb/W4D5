@@ -55,18 +55,26 @@ RSpec.describe User, type: :model do
   end
 
   describe 'password=' do
+    subject(:user) {FactoryBot.build(:user)}
+
     it 'should set the users password digest' do
-      
+      expect(user.password=("password123")).to eq("password123")
     end
   end
 
   describe 'is_password?' do
-    it 'should return true if the password is correct' do
+    it 'should return false if the password is incorrect' do
+      u1 = User.first
+      expect(u1.is_password?("asdfasdf")).to be false
     end
   end
 
   describe 'ensure_session_token' do
-    it 'should generate a new session token' do
+    capy1 = FactoryBot.build(:user)
+    # Comment in line below if you need to add a User to the db for testing
+    # capy1 = User.create(username: "capybara!", password:"iamcute")
+    it 'ensure that a user is saved with a session token' do
+      expect(capy1.session_token).not_to be nil
     end
   end
 end
