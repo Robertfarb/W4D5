@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def create
+    debugger
     user = User.new(user_params)
     if user.save
       log_in_user!(user)
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(params: params[:id])
+    @user = User.find(params[:id])
     if @user
       render :show
     else
