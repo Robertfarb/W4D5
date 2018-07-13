@@ -15,7 +15,10 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'show' do
-    
+    it 'renders the show page' do
+      get :show, {}
+      expect(response).to render(:show)
+    end
   end
 
   describe 'index' do
