@@ -46,7 +46,7 @@ RSpec.describe User, type: :model do
 
   describe 'reset_session_token!' do
     it 'should reset a users session token' do
-      old_sess_token = User.find(1).session_token
+      old_sess_token = User.first.session_token
       stella = User.first
       stella.reset_session_token!
 

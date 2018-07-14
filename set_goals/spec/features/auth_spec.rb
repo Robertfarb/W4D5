@@ -27,7 +27,7 @@ feature 'logging in' do
     visit new_user_url
     fill_in 'username', with: 'logintest'
     fill_in 'password', with: 'applepie'
-    save_and_open_page
+    # save_and_open_page
     click_on 'Create User'
   end
 
